@@ -18,16 +18,17 @@ app.get("/", (req, res) => {
 
 app.post("/submit", async (req, res) => {
   try {
-    const response = await axios.post("http://backend:5000/add", {
-      task: req.body.task
-    });
+    const response = await axios.post(
+      "http://backend:5000/submittodoitem",
+      {
+        task: req.body.task
+      }
+    );
 
     res.send(response.data);
   } catch (error) {
     res.send("Backend connection failed.");
   }
-});
-
-app.listen(3000, () => {
+});app.listen(3000, "0.0.0.0", () => {
   console.log("Frontend running on port 3000");
 });
